@@ -1,0 +1,252 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #161515; /* Fundo preto como fallback */
+    color: #ffffff; /* Texto branco */
+    margin: 0;
+    padding: 0;
+    background-image: url('../simple-minimalism-black-background-red-hd-wallpaper-preview.jpg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a área do fundo */
+    background-position: center; /* Centraliza a imagem no fundo */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa enquanto o conteúdo rola */
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto com 70% de opacidade para o menu de navegação */
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os itens no menu de navegação */
+}
+
+nav ul li {
+    margin: 0 15px; /* Espaçamento entre os itens do menu */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Efeito de transição suave */
+    border-radius: 4px; /* Borda arredondada para os links */
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Cor de fundo semitransparente ao passar o mouse */
+    color: #ff0000; /* Cor do texto ao passar o mouse */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.project-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.project-box {
+    background: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Borda arredondada mais acentuada */
+    padding: 20px;
+    width: calc(33% - 40px); /* 3 boxes per row with gap */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+    text-align: center;
+    box-sizing: border-box;
+    position: relative; /* Para posicionamento absoluto do texto "EM BREVE" */
+    overflow: hidden; /* Garante que o texto não saia da caixa */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para hover */
+}
+
+.project-box:hover {
+    transform: scale(1.05); /* Aumenta a caixa quando o usuário passa o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa ao passar o mouse */
+}
+
+.project-box::before {
+    content: "EM BREVE";
+    font-size: 2em;
+    color: #ff0000; /* Cor do texto "EM BREVE" */
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza o texto */
+    opacity: 0.3; /* Leve transparência para o texto */
+    z-index: 1;
+}
+
+.project-box h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+    z-index: 2; /* Garante que o título esteja acima do texto "EM BREVE" */
+    position: relative; /* Para garantir que o título esteja acima do pseudo-elemento */
+}
+
+.project-box p {
+    z-index: 2;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .project-box {
+        width: calc(50% - 40px); /* 2 boxes per row on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .project-box {
+        width: calc(100% - 40px); /* 1 box per row on mobile */
+    }
+}
+
+/* Estilos para a seção de jogos */
+.games-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.games-section h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ffcc00; /* Cor dourada para o título */
+}
+
+.game {
+    background: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+}
+
+.game h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.game p {
+    font-size: 1em;
+    color: #666;
+}
+
+.game button.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.game button.close-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Jogo da Bolinha */
+.game-area {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #000;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.ball {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bar {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background-color: #00ff00;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Jogo de Clique Rápido */
+#clickMeButton {
+    background-color: #00ff00;
+    color: #fff;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.5em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#clickMeButton:hover {
+    background-color: #00cc00;
+}
+
+#clickGameScore {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Jogo de Memorizar Padrão */
+.color-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.color-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#memoryGameMessage {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+/* Adiciona um estilo para o botão de início do jogo da bolinha */
+.start-btn {
+    background-color: #00ff00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.start-btn:hover {
+    background-color: #00cc00;
+}

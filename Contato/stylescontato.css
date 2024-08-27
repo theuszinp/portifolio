@@ -1,0 +1,260 @@
+/* stylescontato.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #161515; /* Fundo preto como fallback */
+    color: #ffffff; /* Texto branco */
+    margin: 0;
+    padding: 0;
+    background-image: url('../simple-minimalism-black-background-red-hd-wallpaper-preview.jpg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a área do fundo */
+    background-position: center; /* Centraliza a imagem no fundo */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa enquanto o conteúdo rola */
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto com 50% de opacidade para o menu de navegação */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os itens no menu de navegação */
+    background-color: rgba(0, 0, 0, 0); /* Fundo transparente para os itens da lista */
+}
+
+nav ul li {
+    margin: 0 15px; /* Espaçamento entre os itens do menu */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: block;
+    transition: background-color 0.3s ease; /* Efeito de transição suave ao passar o mouse */
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Cor de fundo semitransparente ao passar o mouse */
+}
+
+.contatos {
+    display: flex;
+    align-items: center; /* Alinha verticalmente os itens */
+    justify-content: center;
+    margin: 20px;
+}
+
+.contatos h1 {
+    margin: 0;
+    margin-right: 20px; /* Espaço entre o título e o ícone */
+}
+
+.icone-telefone {
+    max-width: 100px; /* Tamanho máximo do ícone do telefone */
+    height: auto;
+}
+
+.contato-info {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.contato-info p {
+    margin-bottom: 20px;
+}
+
+.instagram-image, .linkedin-image, .github-image {
+    max-width: 100px; /* Tamanho máximo dos ícones */
+    height: auto;
+    margin: 10px;
+}
+
+/* Formulário de contato */
+.form-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    max-width: 300px;
+    width: 100%;
+    transition: all 0.3s ease; /* Transição suave para minimização */
+    z-index: 1000; /* Garante que o formulário esteja acima do overlay e da mensagem de resposta */
+}
+
+/* Estilo do conteúdo do formulário */
+.form-content {
+    display: block;
+}
+
+/* Estilo do formulário minimizado */
+.form-container.minimized .form-content {
+    display: none; /* Esconde o conteúdo do formulário quando minimizado */
+}
+
+/* Estilo dos elementos do formulário */
+.form-container h2 {
+    margin-bottom: 10px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.form-container input, .form-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #d81111;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #e84545;
+}
+
+/* Botão de minimizar do formulário */
+.minimize-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #d81111; /* Botão vermelho */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 18px; /* Tamanho da fonte para o símbolo + ou - */
+    z-index: 1001; /* Garante que o botão esteja acima do formulário */
+}
+
+/* Mensagem de resposta */
+#responseMessage {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #d81111; /* Cor de fundo vermelha */
+    color: #ffffff; /* Texto branco */
+    padding: 20px;
+    border: 2px solid #000000; /* Borda preta */
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000; /* Garante que a mensagem esteja acima do overlay e do formulário */
+    width: 80%; /* Ajuste a largura conforme necessário */
+    max-width: 300px; /* Largura máxima */
+    transition: all 0.3s ease; /* Transição suave para minimização */
+}
+
+/* Estilo do conteúdo da mensagem de resposta */
+#responseMessage .response-content {
+    display: block; /* Inicialmente mostra o conteúdo da mensagem de resposta */
+}
+
+/* Estilo da mensagem de resposta minimizada */
+#responseMessage.minimized .response-content {
+    display: none; /* Esconde o conteúdo da mensagem quando minimizado */
+}
+
+#responseMessage p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+#closeMessageBtn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #000000; /* Cor de fundo do botão de fechar */
+    color: #ffffff; /* Texto branco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#closeMessageBtn:hover {
+    background-color: #941111; /* Cor de fundo do botão ao passar o mouse */
+}
+
+/* Botão de minimizar da mensagem de resposta */
+.minimize-response-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #d81111; /* Botão vermelho */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 18px; /* Tamanho da fonte para o símbolo + ou - */
+    z-index: 1001; /* Garante que o botão esteja acima da mensagem de resposta */
+}
+
+/* Fundo escurecido */
+#overlay {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo escurecida */
+    z-index: 999; /* Certifica-se de que o overlay está atrás do formulário de resposta */
+}
+
+/* Estilos específicos para telas pequenas (mobile) */
+@media (max-width: 600px) {
+    /* Minimiza o formulário automaticamente em telas pequenas */
+    .form-container {
+        bottom: 10px; /* Ajusta a posição inferior */
+        right: 10px; /* Ajusta a posição direita */
+        max-width: 90%; /* Largura máxima ajustada */
+        width: 100%; /* Largura completa */
+        height: auto; /* Altura ajustável */
+    }
+
+    .form-container.minimized .form-content {
+        display: none; /* Esconde o conteúdo do formulário quando minimizado */
+    }
+
+    /* Minimiza a mensagem de resposta automaticamente em telas pequenas */
+    #responseMessage {
+        max-width: 90%;
+        width: 100%;
+        height: auto; /* Altura ajustável */
+        padding: 15px; /* Ajusta o padding para caber melhor na tela */
+    }
+
+    #responseMessage.minimized .response-content {
+        display: none; /* Esconde o conteúdo da mensagem quando minimizado */
+    }
+}

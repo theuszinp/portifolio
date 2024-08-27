@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #161515; /* Fundo preto como fallback */
+    color: #ffffff; /* Texto branco */
+    margin: 0;
+    padding: 0;
+    background-image: url('../simple-minimalism-black-background-red-hd-wallpaper-preview.jpg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a área do fundo */
+    background-position: center; /* Centraliza a imagem no fundo */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa enquanto o conteúdo rola */
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto com 50% de opacidade para o menu de navegação */
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os itens no menu de navegação */
+}
+
+nav ul li {
+    margin: 0 15px; /* Espaçamento entre os itens do menu */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: block;
+    transition: background-color 0.3s ease; /* Efeito de transição suave ao passar o mouse */
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Cor de fundo semitransparente ao passar o mouse */
+}
+
+.main-container {
+    padding: 20px;
+    text-align: center; /* Centraliza o texto */
+}
+
+.section {
+    margin-bottom: 10px; /* Reduz o espaçamento entre as seções */
+}
+
+.experiences-section, .skills-section, .cursosuperior-section {
+    margin: 0 auto;
+    max-width: 800px; /* Largura máxima para as seções */
+    padding: 10px;
+}
+
+.mariogif {
+    width: 300px; /* Ajuste a largura conforme necessário */
+    height: auto;
+    display: block;
+    margin: 10px auto; /* Centraliza a imagem e reduz o espaçamento em torno dela */
+}
+
+.experiences-section, .skills-section, .cursosuperior-section {
+    margin-bottom: 0; /* Remove o espaço extra entre as seções e a imagem do Mario */
+}

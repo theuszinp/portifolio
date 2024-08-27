@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Matheus Dev">
+    <link rel="stylesheet" href="stylescontato.css">
+    <title>Contato</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Apresentação</a></li>
+            <li><a href="../Contato/contato.html">Contato</a></li>
+            <li><a href="../Projetos/projeto.html">Projetos</a></li>
+            <li><a href="../Expereciencias/experiencias.html">Experiências</a></li>
+        </ul>
+    </nav>
+
+    <div class="contatos">
+        <h1>Contato | Contacts</h1>
+        <img src="./imagens/telefone-velho.png" alt="Ícone de Contato" class="icone-telefone">
+    </div>
+
+    <div class="contato-info">
+        <p>Para entrar em contato comigo, vou deixar os meus meios de comunicação abaixo:</p>
+
+        <img src="./imagens/instagram.png" usemap="#instagram-map" class="instagram-image">
+        <map name="instagram-map">
+            <area target="" alt="Instagram" title="Instagram" href="https://www.instagram.com/theuszinp/" coords="0,0,150,150" shape="rect">
+        </map>
+
+        <img src="./imagens/linkedin.png" usemap="#linkedin-map" alt="Ícone de LinkedIn" class="linkedin-image">
+        <map name="linkedin-map">
+            <area target="" alt="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/matheus-souza-699099195/" coords="0,0,150,150" shape="rect">
+        </map>
+        
+        <img src="./imagens/github.png" title="GitHub" alt="GitHub" class="github-image"> 
+    </div>
+
+    <div class="form-container">
+        <button id="minimizeForm" class="minimize-btn">-</button>
+        <div class="form-content">
+            <h2>Envie seu projeto</h2>
+            <p><small>Irei analisar, aguarde por favor</small></p>
+            <form id="contactForm" action="https://formspree.io/f/xeojggre" method="POST">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Div para exibir a mensagem de resposta -->
+    <div id="overlay"></div>
+    <div id="responseMessage">
+        <button id="minimizeResponse" class="minimize-btn">-</button>
+        <div class="response-content">
+            <p id="responseText">Estou analisando seu projeto, Aguarde por favor.</p>
+            <button id="closeMessageBtn">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const responseMessage = document.getElementById('responseMessage');
+    const overlay = document.getElementById('overlay');
+    const responseText = document.getElementById('responseText');
+    const minimizeFormButton = document.getElementById('minimizeForm');
+    const minimizeResponseButton = document.getElementById('minimizeResponse');
+    const closeMessageButton = document.getElementById('closeMessageBtn');
+
+    contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(contactForm);
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: contactForm.method,
+                headers: { 'Accept': 'application/json' },
+                body: formData
+            });
+
+            if (response.ok) {
+                responseText.textContent = 'Estou analisando seu projeto. Obrigado :).';
+            } else {
+                responseText.textContent = 'Erro ao enviar a mensagem. Tente novamente mais tarde.';
+            }
+        } catch (error) {
+            responseText.textContent = `Erro ao enviar a mensagem: ${error.message}`;
+        }
+
+        overlay.style.display = 'block';
+        responseMessage.style.display = 'block';
+
+        contactForm.reset();
+    });
+
+    closeMessageButton.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        responseMessage.style.display = 'none';
+    });
+
+    minimizeFormButton.addEventListener('click', function() {
+        const formContainer = document.querySelector('.form-container');
+        formContainer.classList.toggle('minimized');
+        minimizeFormButton.textContent = formContainer.classList.contains('minimized') ? '+' : '-';
+    });
+
+    minimizeResponseButton.addEventListener('click', function() {
+        const responseMessage = document.getElementById('responseMessage');
+        responseMessage.classList.toggle('minimized');
+        minimizeResponseButton.textContent = responseMessage.classList.contains('minimized') ? '+' : '-';
+    });
+});
+
+    </script>
+</body>
+</html>
