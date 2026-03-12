@@ -271,18 +271,75 @@ img { max-width: 100%; display: block; }
   color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 0.95rem;
 }
 
-/* Responsividade */
+/* ================= RESPONSIVIDADE (OTIMIZADO PARA MOBILE) ================= */
 @media (max-width: 980px) {
   .hero, .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
+  
+  /* TRUQUE PARA MOBILE: Inverte a ordem da secção hero (foto em cima, texto em baixo) */
+  .hero > article { order: 2; } 
+  .hero > aside { order: 1; margin-bottom: 24px; } 
 }
 
 @media (max-width: 720px) {
-  .navbar { padding: 16px 0; flex-direction: column; align-items: flex-start; height: auto; }
-  .nav-links { justify-content: flex-start; }
+  /* Adiciona espaço no fundo para a Dock Flutuante não tapar os textos */
+  body { padding-bottom: 100px; }
+
+  /* Liberta o topo: fica apenas o seu Nome centralizado, sem fundo escuro */
+  .topbar {
+    position: relative; 
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  
+  .navbar { 
+    padding: 24px 0 0 0; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+    min-height: auto;
+  }
+
+  /* O SEGREDO: Transforma os links numa "Dock" flutuante estilo Aplicação Premium */
+  .nav-links { 
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 24px);
+    max-width: 400px;
+    background: rgba(15, 23, 42, 0.85); /* Fundo escuro */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px; /* Formato de pílula redonda */
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap; /* Impede que os links caiam para a linha de baixo */
+    z-index: 1000;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(139, 92, 246, 0.3); /* Sombra com um leve brilho roxo */
+  }
+
+  /* Ajuste dos links para caberem lado a lado como botões de App */
+  .nav-links a {
+    font-size: 0.75rem; /* Letra mais pequena */
+    padding: 10px 8px;
+    border-radius: 999px;
+    flex-grow: 1;
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+
+  /* Ajustes gerais da grelha para telemóvel */
   .stats-grid { grid-template-columns: 1fr; }
   .panel, .card, .badge-box { padding: 24px; }
   .title-xl { font-size: 2rem; }
+  
+  /* Ajuste de UX: Diminui a foto no telemóvel */
+  .avatar-wrap { max-width: 180px; }
 }
 
 /* ================= PRELOADER (TELA DE CÓDIGO) ================= */

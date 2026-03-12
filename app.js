@@ -123,4 +123,61 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ================= 4. NAVEGAÇÃO POR SWIPE (MOBILES) =================
+  let touchstartX = 0;
+  let touchendX = 0;
+
+  // Função que verifica a direção do arrasto
+  function checkDirection() {
+    const threshold = 60; // Distância mínima que o dedo precisa arrastar (em pixels) para ativar
+
+    if (touchendX < touchstartX - threshold) {
+      // Arrastou para a ESQUERDA (Avançar para a próxima aba)
+      navegarSwipe('proxima');
+    }
+    if (touchendX > touchstartX + threshold) {
+      // Arrastou para a DIREITA (Voltar para a aba anterior)
+      navegarSwipe('anterior');
+    }
+  }
+
+  // Captura onde o dedo tocou na tela
+  document.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  // Captura onde o dedo saiu da tela
+  document.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    checkDirection();
+  }, { passive: true });
+
+  // Lógica de roteamento baseada na página atual
+  function navegarSwipe(direcao) {
+    const currentPath = window.location.pathname.toLowerCase();
+    
+    // Identifica em qual página estamos
+    let isProjeto = currentPath.includes('projeto.html');
+    let isExperiencias = currentPath.includes('experiencias.html');
+    let isContato = currentPath.includes('contato.html');
+    let isIndex = !isProjeto && !isExperiencias && !isContato; // Se não for nenhuma, é o Início
+
+    if (direcao === 'proxima') {
+      if (isIndex) window.location.href = 'Projetos/projeto.html';
+      else if (isProjeto) window.location.href = '../Experiencias/experiencias.html';
+      else if (isExperiencias) window.location.href = '../Contato/contato.html';
+      // Se estiver em contatos, faz o loop de volta pro início
+      else if (isContato) window.location.href = '../index.html';
+    } 
+    
+    else if (direcao === 'anterior') {
+      if (isContato) window.location.href = '../Experiencias/experiencias.html';
+      else if (isExperiencias) window.location.href = '../Projetos/projeto.html';
+      else if (isProjeto) window.location.href = '../index.html';
+      // Se estiver no início, vai para o contato (loop reverso)
+      else if (isIndex) window.location.href = 'Contato/contato.html';
+    }
+  }
+
 });
